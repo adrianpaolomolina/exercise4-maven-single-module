@@ -1,0 +1,57 @@
+<project
+   xmlns = "http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://maven.apache.org/POM/4.0.0
+   http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion> 4.0.0 </modelVersion>
+    <groupId> com.apm </groupId>
+    <artifactId> AdvancedMain </artifactId>
+    <version> 1.0 </version>
+    <packaging> jar </packaging>
+    <properties>
+      <commons-lang3.version>3.7</commons-lang3.version>
+      <commons-io.version>2.6</commons-io.version>
+    </properties>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${commons-lang3.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons-io.version}</version>
+      </dependency>
+    </dependencies>
+    <build>
+      <finalName> ${project.groupId}-${project.artifactId} </finalName>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                    <configuration>
+                        <archive>
+                          <manifest>
+                              <mainClass>
+                                com.apm.AdvancedMain
+                              </mainClass>
+                          </manifest>
+                        </archive>
+                        <descriptorRefs>
+                          <descriptorRef>jar-with-dependencies</descriptorRef>
+                        </descriptorRefs>
+                        <appendAssemblyId>false</appendAssemblyId>
+                    </configuration>
+                  </execution>
+              </executions>
+          </plugin>
+      </plugins>
+    </build>
+</project>
